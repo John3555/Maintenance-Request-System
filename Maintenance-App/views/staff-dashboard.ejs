@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/staff.js"></script>
+  <title>Staff Dashboard</title>
+</head>
+<body>
+  <h1>Maintenance Requests</h1>
+  
+  <form id="filters-form">
+    <label>Apartment Number:</label>
+    <input type="text" name="apartment_number">
+    
+    <label>Area:</label>
+    <select name="area">
+      <option value="">All</option>
+      <option value="kitchen">Kitchen</option>
+      <option value="bathroom">Bathroom</option>
+      <option value="living room">Living Room</option>
+      <option value="bedroom">Bedroom</option>
+      <option value="other">Other</option>
+    </select>
+    
+    <label>Status:</label>
+    <select name="status">
+      <option value="">All</option>
+      <option value="pending">Pending</option>
+      <option value="completed">Completed</option>
+    </select>
+    
+    <button type="submit">Filter</button>
+  </form>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Apartment</th>
+        <th>Area</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% requests.forEach(request => { %>
+        <tr>
+          <td><%= request.request_id %></td>
+          <td><%= request.apartment_number %></td>
+          <td><%= request.area %></td>
+          <td><%= request.description %></td>
+          <td><%= request.date_time %></td>
+          <td><%= request.status %></td>
+          <td>
+            <% if (request.status === 'pending') { %>
+              <form action="/update-status" method="POST">
+                <input type="hidden" name="request_id" value="<%= request.request_id %>">
+                <select name="status">
+                  <option value="completed">Completed</option>
+                </select>
+                <button type="submit">Update</button>
+              </form>
+            <% } %>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>

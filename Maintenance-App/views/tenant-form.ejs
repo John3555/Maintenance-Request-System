@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/tenant.js"></script>
+  <title>Submit Maintenance Request</title>
+</head>
+<body>
+  <h1>Submit Maintenance Request</h1>
+  <form action="/submit-request" method="POST" enctype="multipart/form-data">
+    <label>Apartment Number:</label>
+    <input type="text" name="apartment_number" required>
+    
+    <label>Area:</label>
+    <select name="area">
+      <option value="kitchen">Kitchen</option>
+      <option value="bathroom">Bathroom</option>
+      <option value="living room">Living Room</option>
+      <option value="bedroom">Bedroom</option>
+      <option value="other">Other</option>
+    </select>
+    
+    <label>Description:</label>
+    <textarea name="description" required></textarea>
+    
+    <label>Photo (optional):</label>
+    <input type="file" name="photo">
+    
+    <button type="submit">Submit</button>
+    
+    <% if (req.query.success) { %>
+      <p class="success-message">Request submitted successfully!</p>
+    <% } %>
+  </form>
+</body>
+</html>

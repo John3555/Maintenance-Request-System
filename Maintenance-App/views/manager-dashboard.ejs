@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/css/styles.css">
+  <title>Manager Dashboard</title>
+</head>
+<body>
+  <h1>Manage Tenants</h1>
+
+  <h2>Add Tenant</h2>
+  <form action="/add-tenant" method="POST">
+    <label>Name:</label>
+    <input type="text" name="name" required>
+    
+    <label>Phone Number:</label>
+    <input type="text" name="phone_number" required>
+    
+    <label>Email:</label>
+    <input type="email" name="email" required>
+    
+    <label>Check-In Date:</label>
+    <input type="date" name="check_in_date" required>
+    
+    <label>Check-Out Date:</label>
+    <input type="date" name="check_out_date">
+    
+    <label>Apartment Number:</label>
+    <input type="text" name="apartment_number" required>
+    
+    <button type="submit">Add Tenant</button>
+  </form>
+
+  <h2>Move Tenant</h2>
+  <form action="/move-tenant" method="POST">
+    <label>Tenant ID:</label>
+    <input type="text" name="tenant_id" required>
+    
+    <label>New Apartment Number:</label>
+    <input type="text" name="new_apartment_number" required>
+    
+    <button type="submit">Move Tenant</button>
+  </form>
+
+  <h2>Delete Tenant</h2>
+  <form action="/delete-tenant" method="POST">
+    <label>Tenant ID:</label>
+    <input type="text" name="tenant_id" required>
+    
+    <button type="submit">Delete Tenant</button>
+  </form>
+</body>
+</html>
